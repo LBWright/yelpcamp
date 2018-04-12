@@ -19,7 +19,7 @@ Each Campground has:
 * Add in header and footer partials
 * Add in bootstrap
 
-#Creating new campgrounds
+# Creating new campgrounds
 
 * setup new Campuground POST route
 * Add in body-parser
