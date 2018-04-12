@@ -17,8 +17,12 @@
   },
   "homepage": "https://github.com/LBWright/yelpcamp#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
     "ejs": "^2.5.8",
     "express": "^4.16.3",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
     "request": "^2.85.0"
   }
 }
