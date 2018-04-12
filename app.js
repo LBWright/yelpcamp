@@ -7,7 +7,9 @@ let campgrounds = [
   {name: 'Bear Bones Creek', image: 'http://source.unsplash.com/4aKmjx7xYHA'},
   {name: 'Cherry Springs', image: 'http://source.unsplash.com/DgSnapS1itA'},
   {name: 'Dripping Springs', image: 'http://source.unsplash.com/gcCcIy6Fc_M'},
-  {name: 'Soledad Canyon', image: 'http://source.unsplash.com/IKHHRAtheHw'}
+  {name: 'Bear Bones Creek', image: 'http://source.unsplash.com/4aKmjx7xYHA'},
+  {name: 'Cherry Springs', image: 'http://source.unsplash.com/DgSnapS1itA'},
+  {name: 'Dripping Springs', image: 'http://source.unsplash.com/gcCcIy6Fc_M'},
 ];
 
 
