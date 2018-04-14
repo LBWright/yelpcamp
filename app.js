@@ -11,6 +11,7 @@ let seedDB = require('./seeds')
 mongoose.connect('mongodb://localhost/yelp_camp')
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'))
 //populate with dummy data
 seedDB();
 
@@ -39,7 +40,6 @@ app.get('/campgrounds/:id', function(req, res){
     if (err){
       console.log(err)
     } else {
-      console.log(foundCampground)
       res.render('campgrounds/show', {campground: foundCampground})
     }
   })
