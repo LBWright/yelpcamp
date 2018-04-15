@@ -4,8 +4,9 @@ let router = express.Router();
 let Campground = require('../models/campground')
 let Comment = require('../models/comment')
 let User = require('../models/user')
+let middleware = require('../middleware')
 
-router.get('/', function(req,res){
+router.get('/', function(req, res){
   Campground.find({}, function(err, campgrounds){
     if (err){
       console.log(err)
@@ -15,7 +16,7 @@ router.get('/', function(req,res){
   });
 });
 
-router.get('/new', isLoggedIn, function(req, res){
+router.get('/new', middleware.isLoggedIn, function(req, res){
   res.render('campgrounds/new');
 })
 
@@ -31,7 +32,7 @@ router.get('/:id', function(req, res){
   })
 })
 
-router.post('/', isLoggedIn, function(req,res){
+router.post('/', middleware.isLoggedIn, function(req, res){
   //get data from form and add to campgrounds[]
   //redir to campgrounds
   let name = req.body.name;
@@ -52,12 +53,34 @@ router.post('/', isLoggedIn, function(req,res){
   })
 });
 
-//middleware
-function isLoggedIn(req,res,next){
-  if (req.isAuthenticated()){
-    return next();
-  }
-  res.redirect('/login');
-}
+//edit campground route
+router.get('/:id/edit', middleware.checkCampgroundOwnership, function(req, res){
+    Campground.findById(req.params.id, function(err, foundCampground){
+        res.render('campgrounds/edit', {campground: foundCampground});
+  })
+})
+
+//update campground route
+router.put('/:id', middleware.checkCampgroundOwnership, function(req, res){
+  Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+      if (err){
+        console.log(err)
+        res.redirect('/campgrounds')
+      } else {
+        res.redirect('/campgrounds/'+req.params.id)
+      }
+  })
+})
+
+//destroy campground route
+router.delete('/:id', middleware.checkCampgroundOwnership, function(req, res){
+  Campground.findByIdAndRemove(req.params.id, function(err){
+    if (err){
+      console.log(err);
+      res.redirect('/campgrounds')
+    }
+    res.redirect('/campgrounds')
+  })
+})
 
 module.exports = router;

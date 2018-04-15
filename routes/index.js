@@ -4,6 +4,8 @@ const passport = require('passport')
 let Campground = require('../models/campground')
 let Comment = require('../models/comment')
 let User = require('../models/user')
+let middleware = require('../middleware')
+
 
 //root route
 router.get('/', function(req, res){

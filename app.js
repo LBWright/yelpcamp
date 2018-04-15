@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+const methodOverride = require('method-override')
 
 //requiring models
 const app = express();
@@ -31,6 +32,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser())
 
 //configurations
+app.use(methodOverride('_method'))
 mongoose.connect('mongodb://localhost/yelp_camp')
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
