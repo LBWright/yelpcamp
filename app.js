@@ -11,7 +11,7 @@ let Campground = require('./models/campground')
 let Comment = require('./models/comment')
 let User = require('./models/user')
 
-//requiring routes 
+//requiring routes
 let campgroundRoutes = require('./routes/campground')
 let commentRoutes = require('./routes/comments')
 let indexRoutes = require('./routes/index')
@@ -40,7 +40,7 @@ app.use(function(req, res, next){
   next();
 })
 //populate with dummy data
-seedDB();
+//seedDB();
 
 app.use('/campgrounds',campgroundRoutes);
 app.use('/', indexRoutes);
