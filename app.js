@@ -21,7 +21,10 @@ let seedDB = require('./seeds')
 //configs
 app.use(flash());
 app.use(methodOverride('_method'))
-mongoose.connect('mongodb://localhost/yelp_camp')
+
+//switch DB for local development
+mongoose.connect('mongodb://logan:Supercool321!@ds145659.mlab.com:45659/yelpcamp_lbw'
+//mongoose.connect('mongodb://localhost/yelp_camp')
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'))
