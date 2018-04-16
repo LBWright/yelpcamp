@@ -23,7 +23,7 @@ app.use(flash());
 app.use(methodOverride('_method'))
 
 //switch DB for local development
-mongoose.connect('mongodb://logan:Supercool321!@ds145659.mlab.com:45659/yelpcamp_lbw'
+mongoose.connect('mongodb://logan:Supercool321!@ds145659.mlab.com:45659/yelpcamp_lbw')
 //mongoose.connect('mongodb://localhost/yelp_camp')
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
